@@ -1,0 +1,29 @@
+body {
+    padding: 2rem;
+    color: black;
+}
+
+.profile_picture {
+    width: 250px;
+    float: left;
+}
+
+.background {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/background.jpeg');
+    background-size: cover;
+}
+
+.name {
+    color: white;
+}
+
+.jumbotron-custom {
+  color: black;
+  margin-left: 0;
+}

@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block title %} Delete Fighter {% endblock %}
+{% block site %}
+ <div class="card" style="width: 35rem;">
+    <div class="card-body">
+        <h5 class="card-title">Are you sure you want to delete {{ fighter.name }}?</h5>
+  <h1></h1>
+  <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+    </div>
+ </div>
+  <a href="{% url 'fighters' %}"><i class="fa-solid fa-2x fa-arrow-left"></i></a>
+{% endblock %}

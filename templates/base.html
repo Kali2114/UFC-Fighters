@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block title %} Fighters List {% endblock %}
+
+{% block site %}
+    <div class="jumbotron">
+        <div class="d-flex justify-content-between align-items-center">
+        {% if user.is_authenticated %}
+        <h1 class="name">Hello {{ user.username }}!</h1>
+        <a href="{% url 'my_logout' %}" class="btn btn-success">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-success">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+    {% endif %}
+    </div>
+<hr>
+       </div>
+    <a href="{% url 'add_fighter' %}">Add Fighter <i class="fa-solid fa-circle-plus"></i></a>
+<h1 class="name">Fighters:</h1>
+{% for fighter in fighters %}
+    <div class="card" style="width: 50rem;">
+        <div class="card-body">
+            <img src="/media/{{ fighter.profile_picture }}" class="profile_picture"/>
+            <div class="row">
+                <div class="col-9">
+                    <h5 class="card-title">{{ fighter }} | {{  fighter.belt }}</h5>
+                </div>
+                <div class="col-3">
+                    <a href="{% url 'edit_fighter' fighter.id %}" title="Edit Fighter">
+                        <i class="fa-solid fa-2x fa-pen-to-square"></i></a>
+                    <a href="{% url 'delete_fighter' fighter.id %}" title="Delete Fighter">
+                        <i class="fa-solid fa-2x fa-trash-arrow-up"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <p class="card-text">{{ fighter.description }}</p>
+                <b><p class="card-text">{{ fighter.fighting_styles.all|join:", " }}</p></b>
+                <a href="{% url 'fighter_comments' fighter.id %}">View Comments ({{ fighter.comment_set.count }})</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
