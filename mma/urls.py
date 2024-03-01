@@ -16,5 +16,5 @@ urlpatterns = [
     path('ufc/', include('UFC.urls')),
     path('login/', auth_views.LoginView.as_view(next_page='fighters'), name='login'),
     path('logout/', my_logout, name='my_logout'),
-    path('', include(router.urls))
+    path('api/', include(router.urls))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

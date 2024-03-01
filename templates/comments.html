@@ -20,7 +20,7 @@
             {% endfor %}
     {% endif %}
     <div class="jumbotron-custom">
-      <div class="card mb-1">
+      <div class="card mb-1" style="width: 32rem; float: left; margin-right: 1rem;">
            <div class="card-body">
         <form method="post" action="{% url 'fighter_comments' fighter.id %}">
             {% csrf_token %}
